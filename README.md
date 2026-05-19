@@ -57,4 +57,4 @@ Project ini dibangun untuk kompetisi **#juaravibecoding** dengan fokus pada este
 Dibuat dengan dedikasi untuk mendukung visi **Indonesia Emas 2045** melalui pemanfaatan teknologi data untuk kesehatan bangsa.
 
 ---
-© 2024 NutriVision Indonesia. All rights reserved.
+© 2026 NutriVision Indonesia. All rights reserved.
