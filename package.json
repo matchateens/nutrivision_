@@ -1,0 +1,31 @@
+{
+  "name": "nutri",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.4",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.14",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.10"
+  },
+  "dependencies": {
+    "@turf/helpers": "^7.3.5",
+    "@turf/rewind": "^7.3.5",
+    "clsx": "^2.1.1",
+    "d3-geo": "^3.1.1",
+    "d3-scale": "^4.0.2",
+    "framer-motion": "^12.38.0",
+    "lucide-react": "^1.14.0",
+    "react-simple-maps": "^3.0.0",
+    "recharts": "^3.8.1",
+    "tailwind-merge": "^3.5.0"
+  }
+}

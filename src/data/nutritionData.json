@@ -1,0 +1,344 @@
+[
+  {
+    "id": "31", "name": "DKI Jakarta", "region": "Jawa",
+    "stunting": 14.0, "wasting": 5.8, "underweight": 9.4, "hunger": 2.1,
+    "population": 10600000,
+    "trend": [27.5, 17.6, 16.8, 15.6, 14.0],
+    "target_2029": 10.0,
+    "mbg_progress": 72, "mbg_dapur": 285, "mbg_penerima": 820000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "32", "name": "Jawa Barat", "region": "Jawa",
+    "stunting": 20.7, "wasting": 8.0, "underweight": 14.2, "hunger": 3.7,
+    "population": 49400000,
+    "trend": [31.1, 23.9, 21.2, 21.0, 20.7],
+    "target_2029": 16.0,
+    "mbg_progress": 60, "mbg_dapur": 820, "mbg_penerima": 2600000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "33", "name": "Jawa Tengah", "region": "Jawa",
+    "stunting": 20.7, "wasting": 7.8, "underweight": 13.2, "hunger": 3.9,
+    "population": 37200000,
+    "trend": [31.2, 24.1, 22.3, 21.2, 20.7],
+    "target_2029": 16.0,
+    "mbg_progress": 58, "mbg_dapur": 680, "mbg_penerima": 1950000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "34", "name": "DI Yogyakarta", "region": "Jawa",
+    "stunting": 15.0, "wasting": 6.2, "underweight": 10.5, "hunger": 2.5,
+    "population": 3700000,
+    "trend": [25.3, 18.5, 17.6, 16.2, 15.0],
+    "target_2029": 12.0,
+    "mbg_progress": 72, "mbg_dapur": 92, "mbg_penerima": 260000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "35", "name": "Jawa Timur", "region": "Jawa",
+    "stunting": 19.2, "wasting": 7.3, "underweight": 12.7, "hunger": 3.4,
+    "population": 40900000,
+    "trend": [30.2, 23.1, 21.0, 20.0, 19.2],
+    "target_2029": 15.0,
+    "mbg_progress": 65, "mbg_dapur": 760, "mbg_penerima": 2200000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "36", "name": "Banten", "region": "Jawa",
+    "stunting": 22.4, "wasting": 8.8, "underweight": 15.0, "hunger": 4.1,
+    "population": 12200000,
+    "trend": [29.8, 23.2, 21.4, 21.8, 22.4],
+    "target_2029": 17.0,
+    "mbg_progress": 55, "mbg_dapur": 195, "mbg_penerima": 580000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "11", "name": "Aceh", "region": "Sumatera",
+    "stunting": 29.4, "wasting": 12.8, "underweight": 21.5, "hunger": 8.8,
+    "population": 5400000,
+    "trend": [41.5, 35.2, 33.0, 31.5, 29.4],
+    "target_2029": 22.0,
+    "mbg_progress": 35, "mbg_dapur": 75, "mbg_penerima": 175000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "12", "name": "Sumatera Utara", "region": "Sumatera",
+    "stunting": 21.8, "wasting": 9.0, "underweight": 15.5, "hunger": 4.4,
+    "population": 15100000,
+    "trend": [31.5, 25.0, 23.0, 22.4, 21.8],
+    "target_2029": 17.0,
+    "mbg_progress": 55, "mbg_dapur": 265, "mbg_penerima": 730000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "13", "name": "Sumatera Barat", "region": "Sumatera",
+    "stunting": 23.0, "wasting": 9.8, "underweight": 17.0, "hunger": 5.1,
+    "population": 5600000,
+    "trend": [35.6, 28.9, 26.8, 24.5, 23.0],
+    "target_2029": 18.0,
+    "mbg_progress": 48, "mbg_dapur": 90, "mbg_penerima": 210000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "14", "name": "Riau", "region": "Sumatera",
+    "stunting": 13.0, "wasting": 5.5, "underweight": 9.8, "hunger": 2.8,
+    "population": 6600000,
+    "trend": [27.4, 21.0, 18.8, 15.5, 13.0],
+    "target_2029": 10.0,
+    "mbg_progress": 65, "mbg_dapur": 118, "mbg_penerima": 310000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "15", "name": "Jambi", "region": "Sumatera",
+    "stunting": 18.0, "wasting": 7.3, "underweight": 12.5, "hunger": 3.6,
+    "population": 3600000,
+    "trend": [28.1, 21.8, 19.6, 18.8, 18.0],
+    "target_2029": 14.0,
+    "mbg_progress": 55, "mbg_dapur": 64, "mbg_penerima": 165000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "16", "name": "Sumatera Selatan", "region": "Sumatera",
+    "stunting": 18.6, "wasting": 7.5, "underweight": 13.0, "hunger": 4.0,
+    "population": 8600000,
+    "trend": [29.0, 22.4, 20.2, 19.5, 18.6],
+    "target_2029": 14.5,
+    "mbg_progress": 58, "mbg_dapur": 148, "mbg_penerima": 398000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "17", "name": "Bengkulu", "region": "Sumatera",
+    "stunting": 19.8, "wasting": 7.9, "underweight": 13.6, "hunger": 3.9,
+    "population": 2000000,
+    "trend": [30.2, 23.5, 21.5, 20.6, 19.8],
+    "target_2029": 15.5,
+    "mbg_progress": 50, "mbg_dapur": 36, "mbg_penerima": 92000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "18", "name": "Lampung", "region": "Sumatera",
+    "stunting": 14.6, "wasting": 5.7, "underweight": 10.2, "hunger": 2.9,
+    "population": 9100000,
+    "trend": [27.1, 18.2, 14.9, 14.8, 14.6],
+    "target_2029": 12.0,
+    "mbg_progress": 65, "mbg_dapur": 58, "mbg_penerima": 262000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "19", "name": "Bangka Belitung", "region": "Sumatera",
+    "stunting": 18.5, "wasting": 7.1, "underweight": 12.8, "hunger": 3.3,
+    "population": 1500000,
+    "trend": [28.4, 22.0, 19.9, 19.2, 18.5],
+    "target_2029": 14.0,
+    "mbg_progress": 62, "mbg_dapur": 27, "mbg_penerima": 68000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "21", "name": "Kepulauan Riau", "region": "Sumatera",
+    "stunting": 15.0, "wasting": 6.2, "underweight": 10.7, "hunger": 2.7,
+    "population": 2100000,
+    "trend": [25.8, 18.8, 16.8, 16.0, 15.0],
+    "target_2029": 12.0,
+    "mbg_progress": 68, "mbg_dapur": 40, "mbg_penerima": 102000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "51", "name": "Bali", "region": "Bali & NT",
+    "stunting": 8.0, "wasting": 3.5, "underweight": 6.2, "hunger": 1.0,
+    "population": 4400000,
+    "trend": [19.2, 11.5, 9.4, 8.5, 8.0],
+    "target_2029": 6.0,
+    "mbg_progress": 88, "mbg_dapur": 80, "mbg_penerima": 218000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "52", "name": "Nusa Tenggara Barat", "region": "Bali & NT",
+    "stunting": 32.7, "wasting": 13.8, "underweight": 23.8, "hunger": 8.2,
+    "population": 5400000,
+    "trend": [43.6, 36.2, 34.2, 33.5, 32.7],
+    "target_2029": 25.0,
+    "mbg_progress": 40, "mbg_dapur": 72, "mbg_penerima": 182000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "53", "name": "Nusa Tenggara Timur", "region": "Bali & NT",
+    "stunting": 37.9, "wasting": 16.0, "underweight": 28.5, "hunger": 14.0,
+    "population": 5500000,
+    "trend": [46.8, 39.5, 37.2, 38.5, 37.9],
+    "target_2029": 28.0,
+    "mbg_progress": 25, "mbg_dapur": 60, "mbg_penerima": 145000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "61", "name": "Kalimantan Barat", "region": "Kalimantan",
+    "stunting": 27.5, "wasting": 11.3, "underweight": 19.0, "hunger": 7.2,
+    "population": 5500000,
+    "trend": [38.4, 31.0, 29.2, 28.4, 27.5],
+    "target_2029": 21.0,
+    "mbg_progress": 42, "mbg_dapur": 82, "mbg_penerima": 186000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "62", "name": "Kalimantan Tengah", "region": "Kalimantan",
+    "stunting": 24.0, "wasting": 10.0, "underweight": 17.2, "hunger": 6.0,
+    "population": 2700000,
+    "trend": [37.5, 30.1, 28.4, 26.2, 24.0],
+    "target_2029": 18.5,
+    "mbg_progress": 45, "mbg_dapur": 48, "mbg_penerima": 110000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "63", "name": "Kalimantan Selatan", "region": "Kalimantan",
+    "stunting": 24.6, "wasting": 10.0, "underweight": 16.9, "hunger": 5.9,
+    "population": 4200000,
+    "trend": [35.0, 28.2, 26.2, 25.4, 24.6],
+    "target_2029": 19.0,
+    "mbg_progress": 50, "mbg_dapur": 68, "mbg_penerima": 165000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "64", "name": "Kalimantan Timur", "region": "Kalimantan",
+    "stunting": 22.8, "wasting": 9.4, "underweight": 16.0, "hunger": 4.6,
+    "population": 3800000,
+    "trend": [34.1, 27.5, 25.5, 24.2, 22.8],
+    "target_2029": 17.5,
+    "mbg_progress": 55, "mbg_dapur": 64, "mbg_penerima": 150000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "65", "name": "Kalimantan Utara", "region": "Kalimantan",
+    "stunting": 21.5, "wasting": 8.9, "underweight": 15.4, "hunger": 4.3,
+    "population": 700000,
+    "trend": [32.2, 25.8, 23.8, 22.6, 21.5],
+    "target_2029": 17.0,
+    "mbg_progress": 52, "mbg_dapur": 16, "mbg_penerima": 35000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "71", "name": "Sulawesi Utara", "region": "Sulawesi",
+    "stunting": 27.4, "wasting": 11.2, "underweight": 19.0, "hunger": 5.8,
+    "population": 2600000,
+    "trend": [30.8, 24.3, 22.2, 27.0, 27.4],
+    "target_2029": 21.0,
+    "mbg_progress": 55, "mbg_dapur": 44, "mbg_penerima": 110000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "72", "name": "Sulawesi Tengah", "region": "Sulawesi",
+    "stunting": 23.0, "wasting": 9.6, "underweight": 16.5, "hunger": 6.0,
+    "population": 3000000,
+    "trend": [39.0, 32.0, 29.9, 26.0, 23.0],
+    "target_2029": 18.0,
+    "mbg_progress": 40, "mbg_dapur": 50, "mbg_penerima": 120000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "73", "name": "Sulawesi Selatan", "region": "Sulawesi",
+    "stunting": 27.7, "wasting": 11.5, "underweight": 19.5, "hunger": 6.5,
+    "population": 9200000,
+    "trend": [34.2, 27.5, 25.5, 26.8, 27.7],
+    "target_2029": 21.0,
+    "mbg_progress": 48, "mbg_dapur": 155, "mbg_penerima": 395000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "74", "name": "Sulawesi Tenggara", "region": "Sulawesi",
+    "stunting": 26.9, "wasting": 11.4, "underweight": 19.2, "hunger": 6.3,
+    "population": 2700000,
+    "trend": [38.5, 31.5, 29.4, 28.2, 26.9],
+    "target_2029": 20.5,
+    "mbg_progress": 44, "mbg_dapur": 46, "mbg_penerima": 110000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "75", "name": "Gorontalo", "region": "Sulawesi",
+    "stunting": 25.2, "wasting": 10.4, "underweight": 17.8, "hunger": 5.8,
+    "population": 1200000,
+    "trend": [34.1, 27.3, 25.4, 25.8, 25.2],
+    "target_2029": 19.5,
+    "mbg_progress": 50, "mbg_dapur": 22, "mbg_penerima": 54000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "76", "name": "Sulawesi Barat", "region": "Sulawesi",
+    "stunting": 30.3, "wasting": 13.5, "underweight": 24.0, "hunger": 8.8,
+    "population": 1400000,
+    "trend": [45.8, 38.8, 36.7, 33.5, 30.3],
+    "target_2029": 23.0,
+    "mbg_progress": 32, "mbg_dapur": 20, "mbg_penerima": 44000, "mbg_biaya": 10000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "81", "name": "Maluku", "region": "Maluku",
+    "stunting": 26.1, "wasting": 10.6, "underweight": 18.2, "hunger": 8.0,
+    "population": 1900000,
+    "trend": [36.8, 29.8, 27.8, 26.5, 26.1],
+    "target_2029": 20.0,
+    "mbg_progress": 38, "mbg_dapur": 35, "mbg_penerima": 76000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "82", "name": "Maluku Utara", "region": "Maluku",
+    "stunting": 27.9, "wasting": 11.2, "underweight": 19.5, "hunger": 7.5,
+    "population": 1300000,
+    "trend": [36.5, 29.5, 27.5, 27.8, 27.9],
+    "target_2029": 21.5,
+    "mbg_progress": 40, "mbg_dapur": 25, "mbg_penerima": 58000, "mbg_biaya": 12000,
+    "data_source": { "stunting": "Estimasi SSGI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "91", "name": "Papua Barat", "region": "Papua",
+    "stunting": 30.0, "wasting": 12.5, "underweight": 21.0, "hunger": 12.2,
+    "population": 1100000,
+    "trend": [41.2, 34.2, 32.0, 31.0, 30.0],
+    "target_2029": 23.0,
+    "mbg_progress": 28, "mbg_dapur": 16, "mbg_penerima": 35000, "mbg_biaya": 13000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "92", "name": "Papua Barat Daya", "region": "Papua",
+    "stunting": 31.0, "wasting": 13.2, "underweight": 22.5, "hunger": 11.2,
+    "population": 600000,
+    "trend": [42.0, 35.2, 33.0, 32.0, 31.0],
+    "target_2029": 24.0,
+    "mbg_progress": 28, "mbg_dapur": 10, "mbg_penerima": 22000, "mbg_biaya": 13000,
+    "data_source": { "stunting": "Estimasi SKI", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "93", "name": "Papua Selatan", "region": "Papua",
+    "stunting": 25.0, "wasting": 10.8, "underweight": 18.5, "hunger": 10.5,
+    "population": 500000,
+    "trend": [43.5, 36.5, 34.2, 29.5, 25.0],
+    "target_2029": 19.5,
+    "mbg_progress": 25, "mbg_dapur": 9, "mbg_penerima": 18000, "mbg_biaya": 13000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "94", "name": "Papua", "region": "Papua",
+    "stunting": 28.6, "wasting": 13.0, "underweight": 22.0, "hunger": 15.5,
+    "population": 1000000,
+    "trend": [45.8, 38.8, 36.5, 32.5, 28.6],
+    "target_2029": 22.0,
+    "mbg_progress": 20, "mbg_dapur": 14, "mbg_penerima": 30000, "mbg_biaya": 13000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "95", "name": "Papua Pegunungan", "region": "Papua",
+    "stunting": 37.3, "wasting": 17.0, "underweight": 28.5, "hunger": 18.0,
+    "population": 1400000,
+    "trend": [48.2, 41.2, 38.9, 38.2, 37.3],
+    "target_2029": 29.0,
+    "mbg_progress": 15, "mbg_dapur": 10, "mbg_penerima": 23000, "mbg_biaya": 15000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  },
+  {
+    "id": "96", "name": "Papua Tengah", "region": "Papua",
+    "stunting": 39.4, "wasting": 18.0, "underweight": 30.0, "hunger": 17.5,
+    "population": 1300000,
+    "trend": [46.8, 39.8, 37.5, 39.0, 39.4],
+    "target_2029": 30.0,
+    "mbg_progress": 18, "mbg_dapur": 10, "mbg_penerima": 22000, "mbg_biaya": 15000,
+    "data_source": { "stunting": "SKI 2023", "mbg": "Estimasi BGN" }
+  }
+]
