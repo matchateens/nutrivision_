@@ -3,6 +3,86 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Activity, AlertCircle, Loader2 } from 'lucide-react';
 import { getAiSummary } from '../services/geminiService';
 
+const parseMarkdown = (text) => {
+  if (!text) return null;
+  const lines = text.split('\n');
+  return lines.map((line, idx) => {
+    // 1. Check for headings: ### Header
+    if (line.startsWith('### ')) {
+      return (
+        <h4 key={idx} className="text-[10px] font-black text-emerald-400 mt-4 mb-2 first:mt-0 uppercase tracking-widest">
+          {line.replace('### ', '')}
+        </h4>
+      );
+    }
+    
+    // 2. Check for bullet points: * Item or - Item
+    const isBullet = line.trim().startsWith('* ') || line.trim().startsWith('- ');
+    let cleanLine = isBullet ? line.trim().substring(2) : line;
+    
+    // 3. Check for numbered list: 1. Item
+    const isNumbered = /^\d+\.\s/.test(cleanLine.trim());
+    let numPrefix = "";
+    if (isNumbered) {
+      const match = cleanLine.trim().match(/^(\d+\.\s)/);
+      numPrefix = match[1];
+      cleanLine = cleanLine.trim().replace(/^\d+\.\s/, '');
+    }
+
+    // 4. Parse bold text **something**
+    const parts = [];
+    const boldRegex = /\*\*(.*?)\*\*/g;
+    let lastIndex = 0;
+    let match;
+
+    while ((match = boldRegex.exec(cleanLine)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(cleanLine.substring(lastIndex, match.index));
+      }
+      parts.push(
+        <strong key={match.index} className="font-black text-white">
+          {match[1]}
+        </strong>
+      );
+      lastIndex = boldRegex.lastIndex;
+    }
+    
+    if (lastIndex < cleanLine.length) {
+      parts.push(cleanLine.substring(lastIndex));
+    }
+
+    // Return element
+    if (isBullet) {
+      return (
+        <div key={idx} className="flex items-start gap-2 pl-2 py-0.5 text-slate-300">
+          <span className="text-emerald-500 font-bold shrink-0 mt-0.5">•</span>
+          <p className="flex-1 text-[11px] leading-relaxed">{parts.length > 0 ? parts : cleanLine}</p>
+        </div>
+      );
+    }
+
+    if (isNumbered) {
+      return (
+        <div key={idx} className="flex items-start gap-2 pl-2 py-0.5 text-slate-300">
+          <span className="text-emerald-400 font-bold shrink-0 mt-0.5">{numPrefix}</span>
+          <p className="flex-1 text-[11px] leading-relaxed">{parts.length > 0 ? parts : cleanLine}</p>
+        </div>
+      );
+    }
+
+    // Regular paragraph (could be empty line)
+    if (line.trim() === '') {
+      return <div key={idx} className="h-1.5" />;
+    }
+
+    return (
+      <p key={idx} className="text-[11px] text-slate-300 leading-relaxed py-0.5">
+        {parts.length > 0 ? parts : cleanLine}
+      </p>
+    );
+  });
+};
+
 const AiInsight = ({ region }) => {
   const [insight, setInsight] = useState('');
   const [loading, setLoading] = useState(false);
@@ -68,9 +148,9 @@ const AiInsight = ({ region }) => {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-[11px] text-slate-300 leading-relaxed font-medium whitespace-pre-line"
+              className="text-[11px] text-slate-300 leading-relaxed font-medium"
             >
-              {insight}
+              {parseMarkdown(insight)}
             </motion.div>
           ) : error ? (
             <div className="flex items-center gap-2 text-red-400 text-[10px] font-bold py-4">
