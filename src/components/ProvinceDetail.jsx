@@ -8,6 +8,8 @@ import {
   XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, AreaChart, Area
 } from 'recharts';
+import AiInsight from './AiInsight';
+
 
 // ─── Konstanta MBG ─────────────────────────────────────────────────────────
 const BIAYA_PORSI_DEFAULT  = 10000;   // Rp 10.000 per porsi (standar BGN 2025)
@@ -371,6 +373,11 @@ const ProvinceDetail = ({ region, onClose }) => {
           <MBGSimulator region={region} />
         </div>
 
+      </div>
+      
+      {/* ── Section: AI Strategic Insight ── */}
+      <div className="px-6 pb-6 pt-0 border-t border-slate-800/30 bg-slate-950/10">
+        <AiInsight region={region} />
       </div>
     </motion.div>
   );
