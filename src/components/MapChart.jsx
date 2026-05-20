@@ -94,7 +94,7 @@ const PROV_ZOOM = {
   "Papua Pegunungan": 5, "Papua Tengah": 4,
 };
 
-const MapChart = ({ onSelectRegion, selectedId }) => {
+const MapChart = ({ onSelectRegion, selectedId, filterRegion }) => {
   const [tooltip, setTooltip] = useState({ visible: false, x: 0, y: 0, data: null });
   const [drillDown, setDrillDown] = useState(null); // { name, geoUrl, provData }
   const [zoom, setZoom] = useState(1);
@@ -296,7 +296,7 @@ const MapChart = ({ onSelectRegion, selectedId }) => {
                         strokeWidth: isSelected ? 1.5 : 0.4,
                         outline: "none",
                         transition: "all 200ms",
-                        opacity: drillDown && !isSelected ? 0 : 1,
+                        opacity: drillDown && !isSelected ? 0 : (filterRegion && cur && cur.region !== filterRegion ? 0.15 : 1),
                       },
                       hover: {
                         fill: cur ? colorScale(cur.stunting) : "#475569",

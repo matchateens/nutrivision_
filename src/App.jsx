@@ -1,23 +1,37 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Map as MapIcon, Layers, Info, PieChart, Search } from 'lucide-react';
+import { Activity, Map as MapIcon, Layers, Info, PieChart, Search, Award, GitCompare, X } from 'lucide-react';
 import MapChart from './components/MapChart';
 import ProvinceDetail from './components/ProvinceDetail';
+import ProvinceRanking from './components/ProvinceRanking';
+import ComparePanel from './components/ComparePanel';
 import nutritionData from './data/nutritionData.json';
 import districtData from './data/districtData.json';
 
+const REGIONS = ['Semua', 'Jawa', 'Sumatera', 'Kalimantan', 'Sulawesi', 'Bali & NT', 'Maluku', 'Papua'];
+
 const App = () => {
   const [selectedRegion, setSelectedRegion] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults]   = useState([]);
+  const [activeTab, setActiveTab]           = useState('ranking');    // 'ranking' | 'compare'
+  const [filterRegion, setFilterRegion]     = useState(null);         // null = semua
+  const [mobileSearch, setMobileSearch]     = useState(false);
   const searchRef = useRef(null);
 
-  // ── Computed national stats (dari nutritionData) ──
   const totalPopulation   = nutritionData.reduce((acc, d) => acc + d.population, 0);
   const avgStunting       = (nutritionData.reduce((acc, d) => acc + d.stunting, 0) / nutritionData.length).toFixed(1);
-  const totalStuntingAnak = Math.round(nutritionData.reduce((acc, d) => acc + d.population * (d.stunting / 100) * 0.178, 0)); // anak sekolah stunting
+  const totalStuntingAnak = Math.round(nutritionData.reduce((acc, d) => acc + d.population * (d.stunting / 100) * 0.178, 0));
   const totalMbgPenerima  = nutritionData.reduce((acc, d) => acc + (d.mbg_penerima || 0), 0);
   const totalDapur        = nutritionData.reduce((acc, d) => acc + (d.mbg_dapur    || 0), 0);
   const gapToTarget       = (parseFloat(avgStunting) - 14).toFixed(1);
+  // Progress toward 14% target (baseline 2019 national avg ~30%)
+  const BASELINE_2019     = 30.0;
+  const progressPct       = Math.min(100, ((BASELINE_2019 - parseFloat(avgStunting)) / (BASELINE_2019 - 14)) * 100).toFixed(1);
+
+  const handleSelectProvince = (prov) => {
+    setSelectedRegion(prov);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-emerald-500/30 flex flex-col overflow-x-hidden">
@@ -41,7 +55,15 @@ const App = () => {
           </div>
         </div>
 
-        {/* --- SEARCH BAR --- */}
+        {/* --- MOBILE SEARCH TOGGLE (visible on mobile) --- */}
+        <button
+          onClick={() => setMobileSearch(o => !o)}
+          className="lg:hidden p-2.5 bg-slate-800/60 border border-slate-700/50 rounded-xl text-slate-400 hover:text-emerald-400 transition-colors"
+        >
+          {mobileSearch ? <X size={18} /> : <Search size={18} />}
+        </button>
+
+        {/* --- SEARCH BAR (desktop) --- */}
         <div ref={searchRef} className="relative flex-1 max-w-md group hidden lg:block">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500 group-focus-within:text-emerald-400 transition-colors" />
@@ -127,6 +149,63 @@ const App = () => {
         </div>
       </header>
 
+      {/* --- MOBILE SEARCH DROPDOWN --- */}
+      <AnimatePresence>
+        {mobileSearch && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#020617] border-b border-slate-800/50 px-4 py-3 z-40"
+          >
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <input
+                autoFocus
+                type="text"
+                placeholder="Cari Provinsi atau Kabupaten..."
+                className="w-full bg-slate-900/80 border border-slate-700 rounded-xl py-2.5 pl-10 pr-4 text-sm font-bold text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 transition-all"
+                onChange={(e) => {
+                  const q = e.target.value.toLowerCase();
+                  if (q.length > 1) {
+                    const pr = nutritionData.filter(d => d.name.toLowerCase().includes(q));
+                    const dr = districtData.filter(d => d.name.toLowerCase().includes(q));
+                    setSearchResults([...pr, ...dr].slice(0, 6));
+                  } else setSearchResults([]);
+                }}
+              />
+            </div>
+            {searchResults.length > 0 && (
+              <div className="mt-2 bg-slate-900 border border-slate-800 rounded-xl overflow-hidden">
+                {searchResults.map(res => (
+                  <button key={res.id} onClick={() => { setSelectedRegion(res); setSearchResults([]); setMobileSearch(false); }}
+                    className="w-full px-4 py-2.5 text-left hover:bg-emerald-500/10 border-b border-slate-800/40 last:border-0 transition-colors"
+                  >
+                    <p className="text-xs font-black text-white">{res.name}</p>
+                    <p className="text-[9px] text-slate-500 font-bold uppercase">{res.province ? `KAB/KOTA · ${res.province}` : 'PROVINSI'} • {res.stunting}%</p>
+                  </button>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* --- PROGRESS BAR TOWARD 2029 TARGET --- */}
+      <div className="w-full bg-[#010d1a] border-b border-slate-800/40 px-6 py-2.5 flex items-center gap-4">
+        <p className="text-[8px] font-black text-slate-500 uppercase tracking-widest shrink-0">Progres Nasional → Target 14% (2029)</p>
+        <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden">
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${progressPct}%` }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            className="h-full bg-gradient-to-r from-amber-500 via-emerald-400 to-emerald-500 rounded-full"
+          />
+        </div>
+        <p className="text-[9px] font-black text-emerald-400 shrink-0">{progressPct}%</p>
+        <p className="text-[8px] text-slate-600 shrink-0 hidden sm:block">{avgStunting}% → 14.0%</p>
+      </div>
+
       {/* --- MAIN CONTENT (STACKED) --- */}
       <main className="flex-1 flex flex-col w-full bg-[#020617]">
         
@@ -134,11 +213,29 @@ const App = () => {
         <section className="relative w-full h-[75vh] min-h-[550px] bg-slate-950/40 border-b border-slate-800/30 overflow-hidden">
           {/* Ambient Glow */}
           <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.03)_0%,transparent_70%)]"></div>
+
+          {/* REGION FILTER TABS */}
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1 bg-slate-900/80 backdrop-blur-xl border border-slate-700/40 p-1 rounded-2xl shadow-2xl flex-wrap justify-center">
+            {REGIONS.map(r => (
+              <button
+                key={r}
+                onClick={() => setFilterRegion(r === 'Semua' ? null : r)}
+                className={`px-3 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all ${
+                  (r === 'Semua' && !filterRegion) || filterRegion === r
+                    ? 'bg-emerald-500 text-black shadow-[0_4px_12px_rgba(16,185,129,0.4)]'
+                    : 'text-slate-500 hover:text-white hover:bg-slate-700/50'
+                }`}
+              >
+                {r}
+              </button>
+            ))}
+          </div>
           
-          <MapChart 
-            onSelectRegion={setSelectedRegion} 
-            onHoverRegion={() => {}} 
+          <MapChart
+            onSelectRegion={setSelectedRegion}
+            onHoverRegion={() => {}}
             selectedId={selectedRegion}
+            filterRegion={filterRegion}
           />
 
           {/* Floating Legend - Bottom Left (Responsive) */}
@@ -173,28 +270,62 @@ const App = () => {
                 exit={{ opacity: 0, y: -20 }}
                 className="max-w-6xl mx-auto w-full px-6 py-12 flex flex-col items-center justify-center text-center"
               >
-                <div className="w-24 h-24 bg-slate-900/50 rounded-3xl flex items-center justify-center border border-slate-800 shadow-2xl mb-8 group hover:border-emerald-500/30 transition-colors">
-                  <PieChart className="w-10 h-10 text-slate-700 group-hover:text-emerald-500/50 transition-colors" />
+              <div className="w-16 h-16 bg-slate-900/50 rounded-2xl flex items-center justify-center border border-slate-800 shadow-2xl mb-6 group hover:border-emerald-500/30 transition-colors">
+                  <PieChart className="w-7 h-7 text-slate-700 group-hover:text-emerald-500/50 transition-colors" />
                 </div>
-
-                <h2 className="text-3xl font-black text-white mb-4">Analisis Wilayah</h2>
-                <p className="text-slate-500 max-w-lg mx-auto leading-relaxed mb-12">
-                  Silakan klik salah satu provinsi pada peta di atas untuk melihat data prevalensi stunting, tren historis, profil gizi lengkap, dan simulasi anggaran intervensi.
+                <h2 className="text-2xl font-black text-white mb-2">Analisis Wilayah</h2>
+                <p className="text-slate-500 max-w-md mx-auto leading-relaxed mb-8 text-sm">
+                  Klik provinsi pada peta, atau gunakan panel di bawah untuk eksplorasi data.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+                {/* Quick stats */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-3xl mb-10">
                   {[
-                    { label: 'Capaian Terendah', name: 'Bali', val: '8.0%', color: 'text-emerald-400', sub: 'Stunting terendah nasional' },
-                    { label: 'Prioritas Tertinggi', name: 'Papua Tengah', val: '39.4%', color: 'text-red-400', sub: 'Butuh intervensi MBG segera' },
-                    { label: 'Target Nasional 2029', name: 'RPJMN 2024–2029', val: '14.0%', color: 'text-amber-400', sub: 'Rata-rata nasional SKI 2023: 21.5%' }
+                    { label: 'Capaian Terendah',   name: 'Bali',         val: '8.0%',  color: 'text-emerald-400', sub: 'Stunting terendah nasional' },
+                    { label: 'Prioritas Tertinggi', name: 'Papua Tengah', val: '39.4%', color: 'text-red-400',     sub: 'Butuh intervensi MBG segera' },
+                    { label: 'Target Nasional 2029',name: 'RPJMN 2024–2029', val: '14.0%', color: 'text-amber-400', sub: `Rata-rata nasional SKI 2023: ${avgStunting}%` }
                   ].map((card, i) => (
-                    <div key={i} className="bg-slate-900/30 border border-slate-800/50 p-6 rounded-3xl text-left hover:bg-slate-800/40 transition-all group">
-                      <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">{card.label}</p>
-                      <h4 className="text-xl font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">{card.name}</h4>
-                      <p className={`text-2xl font-black ${card.color} mb-1`}>{card.val}</p>
-                      <p className="text-[10px] text-slate-600 font-medium">{card.sub}</p>
+                    <div key={i} className="bg-slate-900/30 border border-slate-800/50 p-5 rounded-2xl text-left hover:bg-slate-800/40 transition-all group">
+                      <p className="text-[9px] font-bold text-slate-500 uppercase tracking-widest mb-1">{card.label}</p>
+                      <h4 className="text-base font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors">{card.name}</h4>
+                      <p className={`text-xl font-black ${card.color} mb-1`}>{card.val}</p>
+                      <p className="text-[9px] text-slate-600 font-medium">{card.sub}</p>
                     </div>
                   ))}
+                </div>
+
+                {/* Tab Navigation */}
+                <div className="w-full max-w-5xl">
+                  <div className="flex items-center gap-2 mb-5">
+                    <button onClick={() => setActiveTab('ranking')}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all border ${
+                        activeTab === 'ranking'
+                          ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-400'
+                          : 'border-slate-800 text-slate-500 hover:text-white hover:border-slate-700'
+                      }`}>
+                      <Award size={13} /> Ranking Provinsi
+                    </button>
+                    <button onClick={() => setActiveTab('compare')}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all border ${
+                        activeTab === 'compare'
+                          ? 'bg-indigo-500/20 border-indigo-500/40 text-indigo-400'
+                          : 'border-slate-800 text-slate-500 hover:text-white hover:border-slate-700'
+                      }`}>
+                      <GitCompare size={13} /> Bandingkan
+                    </button>
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                    {activeTab === 'ranking' ? (
+                      <motion.div key="ranking" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                        <ProvinceRanking onSelectProvince={handleSelectProvince} />
+                      </motion.div>
+                    ) : (
+                      <motion.div key="compare" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
+                        <ComparePanel onSelectProvince={handleSelectProvince} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
             ) : (
@@ -223,7 +354,7 @@ const App = () => {
             <p className="text-[9px] font-black uppercase tracking-[0.2em] text-emerald-500 mb-2">Transparansi Data</p>
             <h2 className="text-lg font-black text-white">Sumber Data & Metodologi</h2>
             <p className="text-[11px] text-slate-500 mt-1 max-w-2xl leading-relaxed">
-              NutriMap menggunakan data dari survei resmi pemerintah dan lembaga internasional. Berikut adalah rincian sumber, versi, dan tingkat kepercayaan setiap data yang digunakan.
+              NutriVision menggunakan data dari survei resmi pemerintah dan lembaga internasional. Berikut adalah rincian sumber, versi, dan tingkat kepercayaan setiap data yang digunakan.
             </p>
           </div>
 
