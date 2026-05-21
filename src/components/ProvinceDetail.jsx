@@ -80,8 +80,8 @@ const TrendChart = ({ data }) => {
 
 // ─── Simulator MBG ──────────────────────────────────────────────────────────
 const MBGSimulator = ({ region }) => {
-  const [inputStr, setInputStr] = useState('100000000000');
-  const [budget, setBudget]     = useState(100_000_000_000);
+  const [inputStr, setInputStr] = useState('0');
+  const [budget, setBudget]     = useState(0);
   const [results, setResults]   = useState(null);
 
   useEffect(() => { runSim(budget); }, [budget, region]);
@@ -108,7 +108,7 @@ const MBGSimulator = ({ region }) => {
   };
 
   const handleChange = (e) => setInputStr(e.target.value.replace(/\D/g, ''));
-  const handleApply  = () => { const n = parseInt(inputStr); if (!isNaN(n) && n > 0) setBudget(n); };
+  const handleApply  = () => { const n = parseInt(inputStr || '0'); if (!isNaN(n) && n >= 0) setBudget(n); };
 
   return (
     <div className="flex flex-col gap-3 h-full">
