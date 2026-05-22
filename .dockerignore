@@ -8,3 +8,5 @@ PRD.md
 design.md
 *.js
 !server.js
+!tailwind.config.js
+!postcss.config.js
