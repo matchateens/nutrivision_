@@ -1,0 +1,355 @@
+{
+  "run_at": "2026-06-26T08:05:48.244Z",
+  "source": "SSGI 2024",
+  "changes": [
+    {
+      "province_id": "31",
+      "province_name": "DKI Jakarta",
+      "old_stunting": 14,
+      "new_stunting": 13.5,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.5"
+    },
+    {
+      "province_id": "32",
+      "province_name": "Jawa Barat",
+      "old_stunting": 20.7,
+      "new_stunting": 19.8,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.9"
+    },
+    {
+      "province_id": "33",
+      "province_name": "Jawa Tengah",
+      "old_stunting": 20.7,
+      "new_stunting": 19.9,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.8"
+    },
+    {
+      "province_id": "34",
+      "province_name": "DI Yogyakarta",
+      "old_stunting": 15,
+      "new_stunting": 14.3,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.7"
+    },
+    {
+      "province_id": "35",
+      "province_name": "Jawa Timur",
+      "old_stunting": 19.2,
+      "new_stunting": 18.5,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.7"
+    },
+    {
+      "province_id": "36",
+      "province_name": "Banten",
+      "old_stunting": 22.4,
+      "new_stunting": 21.6,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.8"
+    },
+    {
+      "province_id": "11",
+      "province_name": "Aceh",
+      "old_stunting": 29.4,
+      "new_stunting": 29.1,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.3"
+    },
+    {
+      "province_id": "12",
+      "province_name": "Sumatera Utara",
+      "old_stunting": 21.8,
+      "new_stunting": 24.8,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "3.0"
+    },
+    {
+      "province_id": "13",
+      "province_name": "Sumatera Barat",
+      "old_stunting": 23,
+      "new_stunting": 22.1,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.9"
+    },
+    {
+      "province_id": "14",
+      "province_name": "Riau",
+      "old_stunting": 13,
+      "new_stunting": 16.4,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "3.4"
+    },
+    {
+      "province_id": "15",
+      "province_name": "Jambi",
+      "old_stunting": 18,
+      "new_stunting": 17.5,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "-0.5"
+    },
+    {
+      "province_id": "16",
+      "province_name": "Sumatera Selatan",
+      "old_stunting": 18.6,
+      "new_stunting": 20.8,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "2.2"
+    },
+    {
+      "province_id": "17",
+      "province_name": "Bengkulu",
+      "old_stunting": 19.8,
+      "new_stunting": 19.2,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "-0.6"
+    },
+    {
+      "province_id": "18",
+      "province_name": "Lampung",
+      "old_stunting": 14.6,
+      "new_stunting": 14.2,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "-0.4"
+    },
+    {
+      "province_id": "19",
+      "province_name": "Bangka Belitung",
+      "old_stunting": 18.5,
+      "new_stunting": 13.8,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "-4.7"
+    },
+    {
+      "province_id": "21",
+      "province_name": "Kepulauan Riau",
+      "old_stunting": 15,
+      "new_stunting": 12.9,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "-2.1"
+    },
+    {
+      "province_id": "51",
+      "province_name": "Bali",
+      "old_stunting": 8,
+      "new_stunting": 7.6,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.4"
+    },
+    {
+      "province_id": "52",
+      "province_name": "Nusa Tenggara Barat",
+      "old_stunting": 32.7,
+      "new_stunting": 30.1,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-2.6"
+    },
+    {
+      "province_id": "53",
+      "province_name": "Nusa Tenggara Timur",
+      "old_stunting": 37.9,
+      "new_stunting": 34.5,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-3.4"
+    },
+    {
+      "province_id": "61",
+      "province_name": "Kalimantan Barat",
+      "old_stunting": 27.5,
+      "new_stunting": 20.3,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-7.2"
+    },
+    {
+      "province_id": "62",
+      "province_name": "Kalimantan Tengah",
+      "old_stunting": 24,
+      "new_stunting": 22.5,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-1.5"
+    },
+    {
+      "province_id": "63",
+      "province_name": "Kalimantan Selatan",
+      "old_stunting": 24.6,
+      "new_stunting": 23.1,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-1.5"
+    },
+    {
+      "province_id": "64",
+      "province_name": "Kalimantan Timur",
+      "old_stunting": 22.8,
+      "new_stunting": 20.8,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-2.0"
+    },
+    {
+      "province_id": "65",
+      "province_name": "Kalimantan Utara",
+      "old_stunting": 21.5,
+      "new_stunting": 26.3,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "4.8"
+    },
+    {
+      "province_id": "71",
+      "province_name": "Sulawesi Utara",
+      "old_stunting": 27.4,
+      "new_stunting": 24.6,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-2.8"
+    },
+    {
+      "province_id": "72",
+      "province_name": "Sulawesi Tengah",
+      "old_stunting": 23,
+      "new_stunting": 28.4,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "5.4"
+    },
+    {
+      "province_id": "73",
+      "province_name": "Sulawesi Selatan",
+      "old_stunting": 27.7,
+      "new_stunting": 27.4,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.3"
+    },
+    {
+      "province_id": "74",
+      "province_name": "Sulawesi Tenggara",
+      "old_stunting": 26.9,
+      "new_stunting": 31.8,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "4.9"
+    },
+    {
+      "province_id": "75",
+      "province_name": "Gorontalo",
+      "old_stunting": 25.2,
+      "new_stunting": 30.2,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "5.0"
+    },
+    {
+      "province_id": "76",
+      "province_name": "Sulawesi Barat",
+      "old_stunting": 30.3,
+      "new_stunting": 27.6,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-2.7"
+    },
+    {
+      "province_id": "81",
+      "province_name": "Maluku",
+      "old_stunting": 26.1,
+      "new_stunting": 28.9,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "2.8"
+    },
+    {
+      "province_id": "82",
+      "province_name": "Maluku Utara",
+      "old_stunting": 27.9,
+      "new_stunting": 30.4,
+      "old_source": "Estimasi SSGI",
+      "new_source": "SSGI 2024",
+      "delta": "2.5"
+    },
+    {
+      "province_id": "91",
+      "province_name": "Papua Barat",
+      "old_stunting": 30,
+      "new_stunting": 33.5,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "3.5"
+    },
+    {
+      "province_id": "92",
+      "province_name": "Papua Barat Daya",
+      "old_stunting": 31,
+      "new_stunting": 32.1,
+      "old_source": "Estimasi SKI",
+      "new_source": "SSGI 2024",
+      "delta": "1.1"
+    },
+    {
+      "province_id": "93",
+      "province_name": "Papua Selatan",
+      "old_stunting": 25,
+      "new_stunting": 37.2,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "12.2"
+    },
+    {
+      "province_id": "94",
+      "province_name": "Papua",
+      "old_stunting": 28.6,
+      "new_stunting": 38.1,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "9.5"
+    },
+    {
+      "province_id": "95",
+      "province_name": "Papua Pegunungan",
+      "old_stunting": 37.3,
+      "new_stunting": 36.8,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-0.5"
+    },
+    {
+      "province_id": "96",
+      "province_name": "Papua Tengah",
+      "old_stunting": 39.4,
+      "new_stunting": 35.2,
+      "old_source": "SKI 2023",
+      "new_source": "SSGI 2024",
+      "delta": "-4.2"
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total_checked": 38,
+    "total_updated": 38,
+    "data_version": "SSGI 2024",
+    "status": "UPDATED"
+  }
+}

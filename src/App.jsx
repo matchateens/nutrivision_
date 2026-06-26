@@ -1,12 +1,21 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Activity, Map as MapIcon, Layers, Info, PieChart, Search, Award, GitCompare, X } from 'lucide-react';
 import MapChart from './components/MapChart';
 import ProvinceDetail from './components/ProvinceDetail';
 import ProvinceRanking from './components/ProvinceRanking';
 import ComparePanel from './components/ComparePanel';
-import nutritionData from './data/nutritionData.json';
-import districtData from './data/districtData.json';
+import DataFreshnessBar from './components/DataFreshnessBar';
+import { fetchLiveData, forceRefresh } from './services/sheetsService';
+import localNutritionData from './data/nutritionData.json';
+import localDistrictData from './data/districtData.json';
+import dataMetadataRaw from './data/dataMetadata.json';
+
+// Ambil metadata dari file dataMetadata.json (di-generate oleh auto-updater)
+const DATA_METADATA = dataMetadataRaw?._meta || {
+  last_updated: '2024-01-01T00:00:00Z',
+  data_version: 'SKI 2023',
+};
 
 const REGIONS = ['Semua', 'Jawa', 'Sumatera', 'Kalimantan', 'Sulawesi', 'Bali & NT', 'Maluku', 'Papua'];
 
@@ -17,6 +26,41 @@ const App = () => {
   const [filterRegion, setFilterRegion]     = useState(null);         // null = semua
   const [mobileSearch, setMobileSearch]     = useState(false);
   const searchRef = useRef(null);
+
+  // ─── Live Data State ─────────────────────────────────────────────────────
+  const [nutritionData, setNutritionData]   = useState(localNutritionData);
+  const [districtData]                      = useState(localDistrictData);
+  const [dataSource, setDataSource]         = useState('local');      // 'sheets' | 'cache' | 'local'
+  const [dataVersion, setDataVersion]       = useState(DATA_METADATA.data_version || 'SKI 2023');
+  const [lastUpdated, setLastUpdated]       = useState(DATA_METADATA.last_updated || null);
+  const [isRefreshing, setIsRefreshing]     = useState(false);
+
+  // ─── Fetch Data dari Sheets saat mount ───────────────────────────────────
+  const loadData = useCallback(async (force = false) => {
+    setIsRefreshing(true);
+    try {
+      const result = force ? await forceRefresh() : await fetchLiveData();
+      if (result.data && result.data.length > 0) {
+        setNutritionData(result.data);
+        setDataSource(result.source);
+        // Ambil versi data dari provinsi pertama
+        const firstSource = result.data[0]?.data_source?.stunting;
+        if (firstSource) setDataVersion(firstSource);
+        setLastUpdated(result.cachedAt || new Date().toISOString());
+      } else {
+        // Fallback ke data lokal
+        setDataSource('local');
+        setLastUpdated(DATA_METADATA.last_updated || null);
+        setDataVersion(DATA_METADATA.data_version || 'SKI 2023');
+      }
+    } catch {
+      setDataSource('local');
+    } finally {
+      setIsRefreshing(false);
+    }
+  }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
 
   const totalPopulation   = nutritionData.reduce((acc, d) => acc + d.population, 0);
   const avgStunting       = (nutritionData.reduce((acc, d) => acc + d.stunting, 0) / nutritionData.length).toFixed(1);
@@ -190,6 +234,16 @@ const App = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* --- DATA FRESHNESS BAR --- */}
+      <DataFreshnessBar
+        dataSource={dataSource}
+        dataVersion={dataVersion}
+        lastUpdated={lastUpdated}
+        isLoading={isRefreshing}
+        onRefresh={() => loadData(true)}
+        provincesCount={nutritionData.length}
+      />
 
       {/* --- PROGRESS BAR TOWARD 2029 TARGET --- */}
       <div className="w-full bg-[#010d1a] border-b border-slate-800/40 px-6 py-2.5 flex items-center gap-4">

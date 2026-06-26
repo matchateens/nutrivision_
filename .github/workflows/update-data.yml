@@ -1,0 +1,76 @@
+name: 🔄 Auto-Update Nutrition Data
+
+on:
+  # Jalankan setiap Senin jam 20:00 UTC = 03:00 WIB
+  schedule:
+    - cron: '0 20 * * 1'
+  # Bisa juga dipicu manual dari GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      force_update:
+        description: 'Paksa update meski data sama'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  update-nutrition-data:
+    runs-on: ubuntu-latest
+    name: Fetch & Update Data Gizi Nasional
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🕷️ Jalankan Scraper Data Terbaru
+        id: scraper
+        run: node scripts/fetch-latest-data.js
+        env:
+          FORCE_UPDATE: ${{ github.event.inputs.force_update || 'false' }}
+
+      - name: 📊 Cek Apakah Data Berubah
+        id: check_changes
+        run: |
+          if git diff --quiet src/data/nutritionData.json src/data/districtData.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "✅ Data tidak ada perubahan — tidak ada commit."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "🆕 Data baru terdeteksi — akan di-commit."
+          fi
+
+      - name: 📝 Commit & Push Data Terbaru
+        if: steps.check_changes.outputs.changed == 'true' || github.event.inputs.force_update == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "NutriVision Auto-Updater 🤖"
+          git add src/data/nutritionData.json src/data/districtData.json scripts/data-update-log.json
+          git commit -m "🤖 auto: update data gizi $(date +'%Y-%m-%d')
+
+          Sumber: stunting.go.id & data.go.id
+          Waktu check: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          [skip ci]"
+          git push
+
+      - name: ✅ Summary
+        run: |
+          echo "### 📊 Hasil Auto-Update NutriVision" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f scripts/data-update-log.json ]; then
+            echo "Log tersedia di \`scripts/data-update-log.json\`" >> $GITHUB_STEP_SUMMARY
+            cat scripts/data-update-log.json >> $GITHUB_STEP_SUMMARY
+          fi

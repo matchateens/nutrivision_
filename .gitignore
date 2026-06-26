@@ -21,3 +21,9 @@ Thumbs.db
 # Editor
 .vscode/
 .idea/
+
+# Auto-updater (log boleh di-track agar bisa cek history di GitHub)
+# scripts/data-update-log.json  ← uncommnet ini jika tidak ingin log di-commit
+
+# Vite env
+.env.*.local
