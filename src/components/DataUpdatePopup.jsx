@@ -70,8 +70,9 @@ const DataUpdatePopup = ({ dataVersion, lastUpdated, dataSource }) => {
 
   const sourceLabel = {
     sheets: { text: 'Live · Google Sheets', color: 'text-emerald-400', icon: '🟢' },
-    cache:  { text: 'Cache 24 Jam',          color: 'text-sky-400',     icon: '🔵' },
-    local:  { text: 'Data Lokal (Offline)',   color: 'text-slate-400',   icon: '⚫' },
+    github: { text: 'Live · GitHub',        color: 'text-emerald-400', icon: '🟢' },
+    cache:  { text: 'Cache 6 Jam',          color: 'text-sky-400',     icon: '🔵' },
+    local:  { text: 'Data Lokal (Offline)', color: 'text-slate-400',   icon: '⚫' },
   }[dataSource] || { text: 'Data Lokal', color: 'text-slate-400', icon: '⚫' };
 
   return (

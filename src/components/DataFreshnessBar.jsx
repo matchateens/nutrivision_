@@ -46,9 +46,18 @@ const DataFreshnessBar = ({ dataSource, dataVersion, lastUpdated, isLoading, onR
       dot:        'bg-emerald-400',
       pulseColor: 'bg-emerald-400',
     },
+    github: {
+      icon:       <Wifi size={11} />,
+      label:      'Live · GitHub',
+      color:      'text-emerald-400',
+      bg:         'bg-emerald-500/10',
+      border:     'border-emerald-500/20',
+      dot:        'bg-emerald-400',
+      pulseColor: 'bg-emerald-400',
+    },
     cache: {
       icon:       <Database size={11} />,
-      label:      'Cache · 24 Jam',
+      label:      'Cache · 6 Jam',
       color:      'text-sky-400',
       bg:         'bg-sky-500/10',
       border:     'border-sky-500/20',
@@ -87,6 +96,9 @@ const DataFreshnessBar = ({ dataSource, dataVersion, lastUpdated, isLoading, onR
           <div className="relative flex items-center justify-center">
             <span className={`w-2 h-2 rounded-full ${cfg.dot}`} />
             {dataSource === 'sheets' && (
+              <span className={`absolute w-2 h-2 rounded-full ${cfg.pulseColor} animate-ping opacity-60`} />
+            )}
+            {dataSource === 'github' && (
               <span className={`absolute w-2 h-2 rounded-full ${cfg.pulseColor} animate-ping opacity-60`} />
             )}
           </div>
