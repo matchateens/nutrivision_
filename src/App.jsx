@@ -6,6 +6,7 @@ import ProvinceDetail from './components/ProvinceDetail';
 import ProvinceRanking from './components/ProvinceRanking';
 import ComparePanel from './components/ComparePanel';
 import DataFreshnessBar from './components/DataFreshnessBar';
+import DataUpdatePopup from './components/DataUpdatePopup';
 import { fetchLiveData, forceRefresh } from './services/sheetsService';
 import localNutritionData from './data/nutritionData.json';
 import localDistrictData from './data/districtData.json';
@@ -79,6 +80,13 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#020617] text-slate-200 font-sans selection:bg-emerald-500/30 flex flex-col overflow-x-hidden">
+
+      {/* --- POPUP PEMBERITAHUAN DATA TERBARU --- */}
+      <DataUpdatePopup
+        dataVersion={dataVersion}
+        lastUpdated={lastUpdated}
+        dataSource={dataSource}
+      />
       
       {/* --- HEADER --- */}
       <header className="sticky top-0 z-50 bg-[#020617]/90 backdrop-blur-xl border-b border-slate-800/50 px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4 shrink-0">
