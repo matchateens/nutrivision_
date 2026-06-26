@@ -13,24 +13,35 @@ import { X, RefreshCw, CheckCircle, Clock, Database, ExternalLink } from 'lucide
  * - dataSource: 'sheets' | 'cache' | 'local'
  */
 
-const POPUP_KEY = 'nutrivision_popup_seen'; // localStorage key
+const POPUP_SEEN_KEY    = 'nutrivision_popup_seen';    // localStorage: versi terakhir yang dilihat
+const POPUP_SESSION_KEY = 'nutrivision_popup_session'; // sessionStorage: sudah muncul di sesi ini
 
 const DataUpdatePopup = ({ dataVersion, lastUpdated, dataSource }) => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // Cek apakah popup sudah pernah ditampilkan untuk versi data ini
-    const seen = localStorage.getItem(POPUP_KEY);
-    if (seen !== dataVersion) {
-      // Delay 1.5 detik biar web load dulu
-      const timer = setTimeout(() => setVisible(true), 1500);
-      return () => clearTimeout(timer);
-    }
+    // Tunggu sampai dataVersion benar-benar sudah dimuat (bukan null/undefined)
+    if (!dataVersion) return;
+
+    // Sudah muncul di sesi ini? Jangan tampilkan lagi
+    const shownThisSession = sessionStorage.getItem(POPUP_SESSION_KEY);
+    if (shownThisSession) return;
+
+    // User pernah klik "Mengerti" untuk versi ini? Jangan tampilkan lagi
+    const lastSeen = localStorage.getItem(POPUP_SEEN_KEY);
+    if (lastSeen === dataVersion) return;
+
+    // Tampilkan popup setelah 1.5 detik
+    const timer = setTimeout(() => setVisible(true), 1500);
+    return () => clearTimeout(timer);
   }, [dataVersion]);
 
   const handleClose = () => {
     setVisible(false);
-    localStorage.setItem(POPUP_KEY, dataVersion);
+    // Simpan di sessionStorage agar tidak muncul lagi di sesi ini
+    sessionStorage.setItem(POPUP_SESSION_KEY, '1');
+    // Simpan di localStorage agar tidak muncul lagi untuk versi data ini
+    if (dataVersion) localStorage.setItem(POPUP_SEEN_KEY, dataVersion);
   };
 
   // Format tanggal
