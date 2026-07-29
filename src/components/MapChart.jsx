@@ -11,7 +11,11 @@ import { RefreshCcw, Layers, Search } from 'lucide-react';
 import nutritionData from '../data/nutritionData.json';
 import districtData from '../data/districtData.json';
 
-const nationalGeoUrl = "/indonesia-38-provinces.json";
+const BASE_PATH = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const nationalGeoUrl = `${BASE_PATH}indonesia-38-provinces.json`;
 
 // Mapping: province name in nutritionData.json → kabupaten file slug
 const PROV_TO_SLUG = {
@@ -135,7 +139,7 @@ const MapChart = ({ onSelectRegion, selectedId, filterRegion }) => {
           setZoom(zoomLevel);
           setDrillDown({
             name: targetProvName,
-            geoUrl: `/kabupaten/${slug}.json`,
+            geoUrl: `${BASE_PATH}kabupaten/${slug}.json`,
             geoProvName: geoProvName,
           });
         }
@@ -197,7 +201,7 @@ const MapChart = ({ onSelectRegion, selectedId, filterRegion }) => {
       setZoom(zoomLevel);
       setDrillDown({
         name: cur.name,
-        geoUrl: `/kabupaten/${slug}.json`,
+        geoUrl: `${BASE_PATH}kabupaten/${slug}.json`,
         geoProvName: geoProvName,
       });
       onSelectRegion(cur);
