@@ -1,10 +1,10 @@
 # 🇮🇩 NutriVision ID — National Nutrition Intelligence
 
 [![JuaraVibeCoding](https://img.shields.io/badge/Competition-%23juaravibecoding-emerald?style=for-the-badge)](https://github.com/matchateens/nutrivision_)
-[![Google Cloud Run](https://img.shields.io/badge/GCP-Cloud%20Run-blue?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/run)
-[![Docker](https://img.shields.io/badge/Docker-Enabled-cyan?style=for-the-badge&logo=docker)](https://www.docker.com/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-22c55e?style=for-the-badge&logo=github)](https://matchateens.github.io/nutrivision_/)
 [![React](https://img.shields.io/badge/React-v18.x-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind%20CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Google Cloud Run](https://img.shields.io/badge/GCP-Cloud%20Run-blue?style=for-the-badge&logo=google-cloud)](https://cloud.google.com/run)
 
 **NutriVision ID** adalah platform dashboard intelijen gizi nasional yang dirancang khusus untuk memantau prevalensi stunting secara real-time dan mensimulasikan dampak fiskal serta cakupan operasional dari program **Makan Bergizi Gratis (MBG)** di seluruh Indonesia.
 
@@ -12,11 +12,11 @@ Project ini dibangun dengan mengutamakan **estetika desain premium (Military-gra
 
 ---
 
-## 📸 Tampilan Dashboard Utama
-![NutriVision ID Dashboard](https://nutrivision-836488272477.asia-southeast2.run.app/favicon.svg) *(Logo Aplikasi)*
+## 🌐 Live Demo Website
+Dashboard di-deploy secara publik dan dapat langsung diakses melalui link berikut:
 
-Dashboard di-deploy secara publik dan dapat diakses pada:  
-🔗 **[Live Demo NutriVision ID](https://nutrivision-836488272477.asia-southeast2.run.app)**
+🔗 **[https://matchateens.github.io/nutrivision_/](https://matchateens.github.io/nutrivision_/)** *(GitHub Pages)*  
+🔗 **[https://nutrivision-836488272477.asia-southeast2.run.app](https://nutrivision-836488272477.asia-southeast2.run.app)** *(Google Cloud Run)*
 
 ---
 
