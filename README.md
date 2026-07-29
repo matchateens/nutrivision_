@@ -16,7 +16,7 @@ Project ini dibangun dengan mengutamakan **estetika desain premium (Military-gra
 Dashboard di-deploy secara publik dan dapat langsung diakses melalui link berikut:
 
 🔗 **[https://matchateens.github.io/nutrivision_/](https://matchateens.github.io/nutrivision_/)** *(GitHub Pages)*  
-🔗 **[https://nutrivision-836488272477.asia-southeast2.run.app](https://nutrivision-836488272477.asia-southeast2.run.app)** *(Google Cloud Run)*
+
 
 ---
 
